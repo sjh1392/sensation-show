@@ -19,7 +19,7 @@
       <span class="nav-sep">|</span>
       <a href="#booking">Booking</a>
       <span class="nav-sep">|</span>
-      <a href="#about">About</a>
+      <a href="#gallery">Previous acts</a>
     </nav>
   </header>
   <section id="home" class="hero">
@@ -33,7 +33,32 @@
       <p class="tagline">Coming 2026</p>
       <div class="ctas">
         <a href="#booking" class="cta">Book now</a>
-        <a href="#about" class="cta">About</a>
+        <a href="#gallery" class="cta">Previous acts</a>
+      </div>
+    </div>
+  </section>
+  <section id="gallery" class="page-section gallery-section">
+    <div class="section-inner">
+      <h2>Previous acts</h2>
+      <div class="gallery">
+        <button type="button" class="gallery-item" data-src="images/1.jpeg" data-title="Act 1" data-description="A thrilling variety performance from our previous show.">
+          <img src="images/1.jpeg" alt="Previous act">
+        </button>
+        <button type="button" class="gallery-item" data-src="images/2.jpeg" data-title="Act 2" data-description="Another spectacular act from the Sensation stage.">
+          <img src="images/2.jpeg" alt="Previous act">
+        </button>
+        <button type="button" class="gallery-item" data-src="images/3.jpeg" data-title="Act 3" data-description="Experience the magic of our variety showcase.">
+          <img src="images/3.jpeg" alt="Previous act">
+        </button>
+        <button type="button" class="gallery-item" data-src="images/4.jpeg" data-title="Act 4" data-description="One of our most memorable performances.">
+          <img src="images/4.jpeg" alt="Previous act">
+        </button>
+        <button type="button" class="gallery-item" data-src="images/5.jpeg" data-title="Act 5" data-description="Talented performers captivating the audience.">
+          <img src="images/5.jpeg" alt="Previous act">
+        </button>
+        <button type="button" class="gallery-item" data-src="images/6.jpeg" data-title="Act 6" data-description="The perfect blend of comedy, music and spectacle.">
+          <img src="images/6.jpeg" alt="Previous act">
+        </button>
       </div>
     </div>
   </section>
@@ -43,11 +68,17 @@
       <p>Book your tickets for Sensation. Details coming soon.</p>
     </div>
   </section>
-  <section id="about" class="page-section">
-    <div class="section-inner">
-      <h2>About</h2>
-      <p>Sensation is a variety performance show coming 2026.</p>
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+      <img src="" alt="" class="lightbox-image">
+      <div class="lightbox-caption">
+        <h3 class="lightbox-title"></h3>
+        <p class="lightbox-description"></p>
+      </div>
     </div>
-  </section>
+  </div>
+  <script src="lightbox.js"></script>
 </body>
 </html>
