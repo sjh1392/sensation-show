@@ -1,86 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sensation | Coming 2026</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="site-header">
-    <a href="#home" class="header-logo">
-      <img src="assets/logo.jpeg" alt="Sensation">
-    </a>
-    <nav class="header-nav">
-      <a href="#home">Home</a>
-      <span class="nav-sep">|</span>
-      <a href="#booking">Booking</a>
-      <span class="nav-sep">|</span>
-      <a href="#gallery">Previous acts</a>
-    </nav>
-  </header>
-  <section id="home" class="hero">
-    <div class="video-background">
-      <video autoplay muted loop playsinline>
-        <source src="assets/showreel.mp4" type="video/mp4">
-      </video>
-      <div class="overlay"></div>
-    </div>
-    <div class="content">
-      <p class="tagline">Coming 2026</p>
-      <div class="ctas">
-        <a href="#booking" class="cta">Book now</a>
-        <a href="#gallery" class="cta">Previous acts</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Viral Variety Show</title>
+    <style>
+      :root {
+        --gold: #ffd978;
+        --light: #fff6d7;
+        --shadow: rgba(0, 0, 0, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+        color: var(--light);
+        background-image:
+          linear-gradient(rgba(45, 0, 0, 0.48), rgba(20, 0, 0, 0.68)),
+          url("./background.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .landing {
+        min-height: 100vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(1rem, 3vw, 2rem);
+      }
+
+      .stage {
+        width: min(100%, 1100px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .logo-wrap {
+        width: min(90vw, 760px);
+        filter: drop-shadow(0 12px 24px var(--shadow));
+        position: relative;
+        z-index: 2;
+      }
+
+      .logo-wrap img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .podium-wrap {
+        width: min(95vw, 860px);
+        margin-top: clamp(-0.75rem, -0.6vw, -0.3rem);
+        filter: drop-shadow(0 16px 18px rgba(0, 0, 0, 0.35));
+      }
+
+      .podium-wrap img {
+        width: 300px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+      }
+
+      .details {
+        margin-top: clamp(0.8rem, 1.8vw, 1.4rem);
+        text-shadow: 0 3px 14px rgba(0, 0, 0, 0.8);
+        line-height: 1.3;
+        max-width: min(92vw, 760px);
+      }
+
+      .details p {
+        margin: 0.4rem 0 0;
+        letter-spacing: 0.07em;
+        font-size: clamp(0.85rem, 2vw, 1.15rem);
+      }
+
+      .cta {
+        margin-top: clamp(1rem, 2vw, 1.5rem);
+        display: inline-block;
+        text-decoration: none;
+        color: #521400;
+        background: linear-gradient(180deg, #ffeeb3 0%, var(--gold) 100%);
+        border: 2px solid rgba(255, 243, 196, 0.7);
+        border-radius: 999px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        padding: 0.8rem 1.45rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        transition: transform 200ms ease, box-shadow 200ms ease;
+      }
+
+      .cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+      }
+
+      .cta:active {
+        transform: translateY(0);
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.68);
+        z-index: 20;
+      }
+
+      .lightbox[aria-hidden="false"] {
+        display: flex;
+      }
+
+      .lightbox-panel {
+        width: min(92vw, 460px);
+        background: linear-gradient(180deg, rgba(54, 0, 0, 0.95), rgba(24, 0, 0, 0.96));
+        border: 2px solid rgba(255, 217, 120, 0.6);
+        border-radius: 16px;
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.55);
+        padding: 1rem;
+      }
+
+      .lightbox-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .lightbox-close {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 0;
+        color: #fff2c8;
+        font-size: 1.35rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .lightbox-message {
+        margin: 0;
+        font-size: clamp(1rem, 3.5vw, 1.35rem);
+        letter-spacing: 0.05em;
+        font-weight: 700;
+        text-align: center;
+        padding-left: 1.85rem;
+      }
+
+      @media (max-width: 700px) {
+        .stage {
+          width: 100%;
+        }
+
+        .logo-wrap {
+          width: min(94vw, 620px);
+        }
+
+        .podium-wrap {
+          width: min(98vw, 680px);
+        }
+
+        .details p {
+          letter-spacing: 0.05em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="landing">
+      <section class="stage" aria-label="The Viral Variety Show event hero">
+        <div class="logo-wrap">
+          <img src="./logo.png" alt="The Viral Variety Show logo" />
+        </div>
+        <div class="podium-wrap" aria-hidden="true">
+          <img src="./platform.png" alt="" />
+        </div>
+        <div class="details">
+          <p><strong>www.theviralvarietyshow.co.uk</strong></p>
+          <p><strong>Stepping off the screen and into the spotlight!</strong></p>
+          <p>
+            The Viral Variety Show brings your favourite viral creators to life in an electrifying
+            live stage experience.
+          </p>
+          <p>
+            From jaw-dropping talent and comedy to dance, music and must see moments, this high
+            energy show features the stars you know and love performing like you've never seen
+            them before.
+          </p>
+        </div>
+        <button class="cta" id="bookNowBtn" type="button" aria-label="Book tickets for the event">
+          BOOK NOW
+        </button>
+      </section>
+    </main>
+
+    <div
+      class="lightbox"
+      id="ticketsLightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="ticketsLightboxMessage"
+    >
+      <div class="lightbox-panel">
+        <div class="lightbox-row">
+          <p class="lightbox-message" id="ticketsLightboxMessage">Tickets on sale soon</p>
+          <button class="lightbox-close" id="lightboxCloseBtn" type="button" aria-label="Close message">
+            ×
+          </button>
+        </div>
       </div>
     </div>
-  </section>
-  <section id="gallery" class="page-section gallery-section">
-    <div class="section-inner">
-      <h2>Previous acts</h2>
-      <div class="gallery">
-        <button type="button" class="gallery-item" data-src="images/1.jpeg" data-title="Act 1" data-description="A thrilling variety performance from our previous show.">
-          <img src="images/1.jpeg" alt="Previous act">
-        </button>
-        <button type="button" class="gallery-item" data-src="images/2.jpeg" data-title="Act 2" data-description="Another spectacular act from the Sensation stage.">
-          <img src="images/2.jpeg" alt="Previous act">
-        </button>
-        <button type="button" class="gallery-item" data-src="images/3.jpeg" data-title="Act 3" data-description="Experience the magic of our variety showcase.">
-          <img src="images/3.jpeg" alt="Previous act">
-        </button>
-        <button type="button" class="gallery-item" data-src="images/4.jpeg" data-title="Act 4" data-description="One of our most memorable performances.">
-          <img src="images/4.jpeg" alt="Previous act">
-        </button>
-        <button type="button" class="gallery-item" data-src="images/5.jpeg" data-title="Act 5" data-description="Talented performers captivating the audience.">
-          <img src="images/5.jpeg" alt="Previous act">
-        </button>
-        <button type="button" class="gallery-item" data-src="images/6.jpeg" data-title="Act 6" data-description="The perfect blend of comedy, music and spectacle.">
-          <img src="images/6.jpeg" alt="Previous act">
-        </button>
-      </div>
-    </div>
-  </section>
-  <section id="booking" class="page-section">
-    <div class="section-inner">
-      <h2>Booking</h2>
-      <p>Book your tickets for Sensation. Details coming soon.</p>
-    </div>
-  </section>
-  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
-    <div class="lightbox-backdrop"></div>
-    <button type="button" class="lightbox-arrow lightbox-prev" aria-label="Previous">&lsaquo;</button>
-    <button type="button" class="lightbox-arrow lightbox-next" aria-label="Next">&rsaquo;</button>
-    <div class="lightbox-content">
-      <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
-      <img src="" alt="" class="lightbox-image">
-      <div class="lightbox-caption">
-        <h3 class="lightbox-title"></h3>
-        <p class="lightbox-description"></p>
-      </div>
-    </div>
-  </div>
-  <script src="lightbox.js"></script>
-</body>
+
+    <script>
+      const bookNowBtn = document.getElementById("bookNowBtn");
+      const ticketsLightbox = document.getElementById("ticketsLightbox");
+      const lightboxCloseBtn = document.getElementById("lightboxCloseBtn");
+
+      function openLightbox() {
+        ticketsLightbox.setAttribute("aria-hidden", "false");
+      }
+
+      function closeLightbox() {
+        ticketsLightbox.setAttribute("aria-hidden", "true");
+      }
+
+      bookNowBtn.addEventListener("click", openLightbox);
+      lightboxCloseBtn.addEventListener("click", closeLightbox);
+
+      ticketsLightbox.addEventListener("click", (event) => {
+        if (event.target === ticketsLightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeLightbox();
+        }
+      });
+    </script>
+  </body>
 </html>
