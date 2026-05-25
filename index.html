@@ -84,8 +84,15 @@
         font-size: clamp(0.85rem, 2vw, 1.15rem);
       }
 
-      .cta {
+      .cta-group {
         margin-top: clamp(1rem, 2vw, 1.5rem);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .cta {
         display: inline-block;
         text-decoration: none;
         color: #521400;
@@ -203,9 +210,25 @@
             them before.
           </p>
         </div>
-        <a class="cta" id="bookNowBtn" type="button" aria-label="Book tickets for the event" href="https://nottingham-theatre.co.uk/NottinghamArtsTheatre.dll/Booking?Booking=TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_2406990.TcsSection_1630462">
-          BOOK NOW
-        </a>
+        <div class="cta-group">
+          <a
+            class="cta"
+            id="bookNowBtn"
+            aria-label="Book tickets for the event"
+            href="https://nottingham-theatre.co.uk/NottinghamArtsTheatre.dll/Booking?Booking=TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_2406990.TcsSection_1630462"
+          >
+            BOOK NOW
+          </a>
+          <a
+            class="cta"
+            href="https://book.stripe.com/8x214f5co2We4QAcflg3600"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Purchase Virtual Show Ticket"
+          >
+            VIRTUAL SHOW TICKET
+          </a>
+        </div>
       </section>
     </main>
 
